@@ -1,0 +1,36 @@
+
+body {
+  font-family: "Manrope", sans-serif;
+}
+
+/* Dual Range Slider styling */
+input[type="range"].dual-range-input {
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+  appearance: none;
+  background: none;
+}
+
+input[type="range"].dual-range-input::-webkit-slider-thumb {
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #2563eb; /* bg-blue-600 */
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  appearance: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+input[type="range"].dual-range-input::-moz-range-thumb {
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #2563eb;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
