@@ -7,7 +7,7 @@ export function ProductCard({ product }) {
     const dispatch = useDispatch();
 
     return (
-        <div className="group flex flex-col bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-900 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden h-full">
+        <div className="group flex flex-col bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-900 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 h-full">
             {/* Clickable Card Link Area */}
             <Link to={`/product/${product.id}`} className="flex flex-col flex-grow">
                 {/* Image Wrapper */}
@@ -32,7 +32,7 @@ export function ProductCard({ product }) {
                             {product.category || "General"}
                         </span>
                         {/* Title */}
-                        <h3 className="text-gray-800 dark:text-gray-200 font-semibold text-xs sm:text-sm line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors h-9 sm:h-10 leading-snug">
+                        <h3 className="text-gray-800 dark:text-gray-200 font-semibold text-xs sm:text-sm line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors min-h-9 sm:min-h-10 leading-snug">
                             {product.name}
                         </h3>
                     </div>

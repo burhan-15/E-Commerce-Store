@@ -16,7 +16,7 @@ export function Navbar() {
     const [isMobileCollectionsOpen, setIsMobileCollectionsOpen] = useState(false);
 
     return (
-        <div className="h-20 md:h-26 flex justify-between items-center shadow-sm sticky top-0 bg-white dark:bg-black dark:text-white border-b border-gray-100 dark:border-gray-900 px-6 md:px-16 z-40 transition-colors duration-300">
+        <div className="h-20 md:h-26 flex justify-between items-center shadow-sm sticky top-[env(safe-area-inset-top)] bg-white dark:bg-black dark:text-white border-b border-gray-100 dark:border-gray-900 px-6 md:px-16 z-40 transition-colors duration-300">
 
             {/* Left Section: Mobile Menu Trigger + Logo */}
             <div className="flex items-center gap-3">
