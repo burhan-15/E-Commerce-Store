@@ -1,11 +1,12 @@
 import { useParams, Link } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { Star, ShoppingCart, ArrowLeft, Shield, Truck, RotateCcw,Plus,Minus } from "lucide-react";
+import { Star, ShoppingCart, ArrowLeft, Shield, Truck, RotateCcw, Plus, Minus } from "lucide-react";
 import { addToCart } from "../feature/cartSlice/cartSlice";
 import { useState } from "react";
+import { ProductCard } from "../components/ProductCard";
 
 export default function ProductPage() {
-    const [quantity , setQuantity] = useState(1)
+    const [quantity, setQuantity] = useState(1)
     const { productId } = useParams();
     const dispatch = useDispatch();
 
@@ -33,8 +34,12 @@ export default function ProductPage() {
         );
     }
 
+    const suggestedProducts = allProducts
+        .filter(p => p.category === product.category && p.id !== product.id)
+        .slice(0, 4);
+
     return (
-        <div className="w-full max-w-7xl px-4 flex flex-col gap-6 text-gray-800 dark:text-gray-100">
+        <div className="w-full max-w-7xl px-4 flex flex-col gap-6 text-gray-800 dark:text-gray-100 px-6 py-10">
             {/* Breadcrumb Navigation */}
             <Link to="/" className="text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-2 font-medium self-start transition-colors">
                 <ArrowLeft size={16} /> Back to Products
@@ -102,16 +107,16 @@ export default function ProductPage() {
                     </div>
 
                     <div className="flex flex-col gap-6">
-                        <div className="flex w-fit items-center p-1 border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden bg-white dark:bg-gray-950">
-                            <button 
-                                onClick={() => setQuantity(quantity > 1  ? quantity - 1 : quantity)}
+                        <div className="flex w-fit items-center p-1 border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden bg-white dark:bg-gray-955">
+                            <button
+                                onClick={() => setQuantity(quantity > 1 ? quantity - 1 : quantity)}
                                 className="px-2 py-1 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-900 cursor-pointer"
-                                >
+                            >
                                 <Minus size={12} />
                             </button>
                             <span className="px-2 text-xs font-bold w-6 text-center">{quantity}</span>
-                            <button 
-                                onClick={() => setQuantity(quantity+1)}
+                            <button
+                                onClick={() => setQuantity(quantity + 1)}
                                 className="px-2 py-1 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-900 cursor-pointer"
                             >
                                 <Plus size={12} />
@@ -145,6 +150,25 @@ export default function ProductPage() {
 
                 </div>
             </div>
+
+            {/* Suggested Products Section */}
+            {suggestedProducts.length > 0 && (
+                <div className="mt-16 pt-10 w-full flex flex-col gap-8">
+                    <div className="flex flex-col gap-1.5">
+                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
+                            Related Items
+                        </span>
+                        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                            You May Also Like
+                        </h2>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 w-full">
+                        {suggestedProducts.map((p) => (
+                            <ProductCard product={p} key={p.id} />
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

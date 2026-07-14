@@ -55,7 +55,7 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Navbar />
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-10 px-4 flex justify-center transition-colors duration-300">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pb-10 transition-colors duration-300">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<AllProduct />} />
